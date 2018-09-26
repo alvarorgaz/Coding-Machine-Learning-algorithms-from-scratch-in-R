@@ -1,0 +1,32 @@
+---
+title: "Untitled"
+author: "a"
+date: "26 September 2018"
+output: html_document
+---
+
+We use the derivative:
+
+$\left( \begin{array}{r} y_1 \\ y_2 \\ y_3 \\ y_4 \\ y_5 \\ y_6 \\ y_7 \\ y_8 \end{array} \right) = \underbrace{\left( \begin{array}{rrrr} 1 & 0 & 0 & 0\\ 1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 \end{array} \right)}_{\text{Design Matrix}, \mathbf{X}} \left( \begin{array}{c} \alpha_1 \\ \alpha_2 \\ \alpha_3 \\ \alpha_4 \end{array} \right) + \left( \begin{array}{r} \varepsilon_1 \\ \varepsilon_2 \\ \varepsilon_3\\ \varepsilon_4 \\ \varepsilon_5\\ \varepsilon_6\\ \varepsilon_7\\ \varepsilon_8 \end{array} \right)$
+
+```{r}
+x1=iris$Petal.Width
+x2=iris$Sepal.Width
+y=iris$Sepal.Length
+b0=4
+b1=0.5
+b2=0
+learning=0.001
+for(i in 1:1000000){
+  y_predicted=b0+b1*x1+b2*x2
+  b0_gradient=-2/length(x1)*sum((y-y_predicted))
+  b1_gradient=-2/length(x1)*sum((y-y_predicted)*x1)
+  b2_gradient=-2/length(x2)*sum((y-y_predicted)*x2)
+  b0=b0-b0_gradient*learning
+  b1=b1-b1_gradient*learning
+  b2=b2-b2_gradient*learning
+}
+c(b0,b1,b2)
+lm(iris$Sepal.Length~iris$Petal.Width+iris$Sepal.Width)
+```
+
