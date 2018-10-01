@@ -1,6 +1,6 @@
 # Coding-Machine-Learning-algorithms-from-scratch-in-R
 
-I am Álvaro Orgaz Expósito, a data science student at KTH (Stockholm, Sweden) and a statistician from UPC-UB (Barcelona, Spain).
+**Author:** I am Álvaro Orgaz Expósito, a data science student at KTH (Stockholm, Sweden) and a statistician from UPC-UB (Barcelona, Spain).
 
 **Abstract:** 
 
